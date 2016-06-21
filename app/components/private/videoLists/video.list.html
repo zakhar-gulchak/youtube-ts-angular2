@@ -1,0 +1,40 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:x-large">
+        {{ title }}
+    </div>
+
+    <div class="panel-body">
+
+        <div class="clearfix">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div *ngIf="videos && !videos.length">
+                    Can't find any videos.
+                </div>
+                <div class="list-group" *ngIf="videos.length">
+                    <a [routerLink]="['videoDetail', {videoId:video.id}]"
+                       class="list-group-item clearfix"
+                       *ngFor="let video of videos">
+                        <img class="thumbnail" [src]="video.src"
+                             *ngIf="video.src.length"/>
+
+                        <div class="video-desc">
+                            <h4 class="list-group-item-heading">{{ video.title }}</h4>
+
+                            <p class="list-group-item-text" *ngIf="video.description.length">
+                                <pre>{{ video.description }}</pre>
+
+                        </div>
+                        <span class="pull-right" *ngIf="vm.inEditMode">
+                            <button (click)="goEdit($event, video.id)" class="btn btn-xs btn-info">Edit</button>
+                            <button class="btn btn-xs btn-warning" (click)="deleteVideo($event, video.id)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </a>
+                </div>
+            </div><!-- /.col-lg-8 -->
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</div>

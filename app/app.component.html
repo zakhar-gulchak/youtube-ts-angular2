@@ -1,0 +1,53 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a class="navbar-brand"
+           [routerLink]="['./Youtube', 'Home']">Home</a>
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left" *ngIf="isLoggedIn()">
+                <li [class.active]="router.isRouteActive(router.generate(['Upload']))">
+                    <a [routerLink]="['Upload']">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Upload video</a></li>
+                <li [class.active]="router.isRouteActive(router.generate(['Myvideos']))">
+                    <a [routerLink]="['Myvideos']">
+                    <i class="glyphicon glyphicon-list"></i>
+                    My videos</a></li>
+                <li [class.active]="router.isRouteActive(router.generate(['WatchLaterList']))">
+                    <a [routerLink]="['WatchLaterList']">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Watch Later</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" *ngIf="getUser()">
+                <li class="navbar-small-padding">
+                    <a class="userlink" href="{{ userInfo.link }}" target="_blank">{{ userInfo.name }}
+                        <img class="user-avatar"
+                             *ngIf="userInfo.picture"
+                             src="{{ userInfo.picture }}">
+                        <i class="glyphicon glyphicon-user" *ngIf="!userInfo.picture"></i>
+                    </a>
+                </li>
+                <li><a href="#" (click)="logout()" class="clickable"><i class="glyphicon glyphicon-off"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedIn()">
+                <li><a href="#" (click)="login()">
+                    <i class="glyphicon glyphicon-user"></i>
+                    Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

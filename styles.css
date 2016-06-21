@@ -1,23 +1,70 @@
-/* Master Styles */
-h1 {
-    color: #369;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 250%;
-}
-h2, h3 {
-    color: #444;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-}
 body {
-    margin: 2em;
-}
-body, input[text], button {
-    color: #888;
-    font-family: Cambria, Georgia;
+    background-color: #C6D9F1;
 }
 
-/*
- * See https://github.com/angular/angular.io/blob/master/public/docs/_examples/styles.css
- * for the full set of master styles used by the documentation samples
- */
+.user-avatar {
+    border-radius: 16px;
+    height: 32px;
+    width: 32px;
+}
+
+.nav > li.navbar-small-padding > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.userlink {
+    display: block;
+    max-width: 175px;
+    overflow: hidden;
+}
+.dropdown-menu {
+    position: relative;
+    float: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 600px;
+}
+
+#my_video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+#my_video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown-menu .thumbnail,
+.list-group-item .thumbnail {
+    width: 130px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.dropdown-menu .video-desc,
+.list-group-item .video-desc {
+    padding-left: 140px;
+    white-space: normal;
+}
+
+.video-desc pre {
+    background: none;
+    border: 0;
+}
+
+@media (max-width: 440px) {
+    #logo {
+        display: none;
+    }
+}
+.navbar-brand.router-link-active,
+.navbar-brand.router-link-active:hover {
+    color: #ffffff;
+    background-color: #080808;
+}

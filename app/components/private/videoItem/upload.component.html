@@ -1,0 +1,104 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size: x-large">
+        Video upload page
+    </div>
+
+    <div class="panel-body">
+        <form class="form-horizontal" name="videoForm" novalidate>
+            <fieldset>
+                <legend>Upload video form</legend>
+
+                <div class="form-group"
+                     ng-class="{'has-error': videoForm.inputTitle.$invalid &&
+                                     videoForm.inputTitle.$dirty}">
+                    <label class="col-md-2 control-label" for="inputTitle">Title:</label>
+
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               id="inputTitle"
+                               name="inputTitle"
+                               type="text"
+                               placeholder="Default title"
+                               ng-model="vm.video.title"
+                               required/>
+                    </div>
+                    <span class="help-block has-error" ng-show="videoForm.inputTitle.$error.required">
+                        Title is required.
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="inputDescription">Description:</label>
+
+                    <div class="col-md-4">
+                        <textarea class="form-control"
+                                  id="inputDescription"
+                                  name="inputDescription"
+                                  placeholder="Default description"
+                                  ng-model="vm.video.description"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="inputPrivacy">Privacy Status:</label>
+
+                    <div class="col-md-4">
+                        <select class="form-control"
+                                id="inputPrivacy"
+                                name="inputPrivacy"
+                                ng-model="vm.video.status">
+                            <option>public</option>
+                            <option>unlisted</option>
+                            <option>private</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="inputVideo">File</label>
+
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               id="inputVideo"
+                               name="inputVideo"
+                               type="file"
+                               file-model="vm.video.file"
+                               accept="video/*"
+                               required/>
+                    </div>
+                </div>
+
+                <tag-manager video="vm.video"></tag-manager>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                    style="width:80px;margin-right:10px"
+                                    type="submit"
+                                    ng-click="vm.upload(videoForm.$valid)">
+                                Upload
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-default"
+                                    style="width:70px"
+                                    ng-click="vm.cancel()">
+                                Cancel
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+        <p id="disclaimer" ng-if="!vm.video.id">
+            By uploading a video, you certify that you own all rights to the
+            content or that you are authorized by the owner to make the content publicly available on YouTube,
+            and that it otherwise complies with the YouTube Terms of Service located at
+            <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a>
+        </p>
+
+    </div>
+</div>

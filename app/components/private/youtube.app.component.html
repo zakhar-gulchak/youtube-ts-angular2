@@ -1,0 +1,41 @@
+<div class="panel panel-primary text-center">
+    <div class="panel-heading" style="font-size:x-large">
+        Youtube API application on AngularJS
+    </div>
+    <img id="logo" src="/assets/images/youtube-logo.png" style="width:400px;margin:20px"/>
+
+    <div class="panel-body clearfix">
+        <div class="col-lg-2"></div> <!-- todo  make one nested template for 3 different -->
+        <div class="col-lg-8">
+            <div class="input-group-btn">
+                <input type="text" class="form-control" placeholder="Search for..." [(ngModel)]="text"
+                       (input)="search(text)">
+            </div><!-- /input-group -->
+            <ul class="dropdown-menu" style="display: block"
+                *ngIf="videos.length">
+                <li *ngFor="let video of videos">
+                    <a class="clearfix"
+                       [routerLink]="['./Youtube', 'VideoDetail', {videoId: video.id.videoId}]">
+                        <img class="thumbnail" [src]="video.snippet.thumbnails.default.url"
+                             *ngIf="video.snippet.thumbnails.default.url"/>
+
+                        <div class="video-desc">
+                            <h4>{{ video.snippet.title }}</h4>
+
+                            <div>{{ video.snippet.description|slice:0:100 }}</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="help-block">
+        <div>Developed by:</div>
+        <h3>Gulchak Zahar</h3>
+
+        <div>gulchak.zahar@gmail.com</div>
+        <a href="http://github.com/zahar-g" target="_blank">github.com/zahar-g</a>
+    </div>
+</div>
