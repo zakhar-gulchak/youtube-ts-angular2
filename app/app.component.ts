@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouteConfig, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 // import { Location, PathLocationStrategry } from '@angular/router';
 import { AuthService } from './services/auth.service';
@@ -49,7 +49,7 @@ import {WatchLaterListComponent} from "./components/private/videoLists/watch.lat
         component: VideoDetailComponent
     }
 ])
-export class AppComponent {
+export class AppComponent implements OnInit {
     constructor (private _authService: AuthService, private router: Router) {
 
     }
@@ -70,5 +70,8 @@ export class AppComponent {
     getUser() {
         this.userInfo = this._authService.getUser();
         return this.userInfo;
+    }
+
+    ngOnInit() {
     }
 }

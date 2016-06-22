@@ -1,15 +1,18 @@
 import { USER } from '../components/mock-user';
 import { Injectable } from '@angular/core';
-import {User} from "../entities/user";
-// import { LocalStorage } from "angular2-local-storage/local_storage";
+import { GoogleAPI } from './gloader';
+// import {User} from "../entities/user";
 
 @Injectable()
 export class AuthService {
-    private loggedIn = false;
 
-    constructor() {
+    constructor(private loggedIn, private gAPI: GoogleAPI) {
         this.loggedIn = !!localStorage.getItem('auth_token');
+        this.gAPI.doSomethingGoogley().then(() => {
+            console.log('ta da');
+        });
     }
+
     getUser() {
         // if (this.loggedIn) {
         //     return Promise.resolve(USER);

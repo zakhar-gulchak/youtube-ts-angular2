@@ -1,5 +1,6 @@
-import { bootstrap }    from '@angular/platform-browser-dynamic';
+import {bootstrap}    from '@angular/platform-browser-dynamic';
+import {AppComponent} from './app.component';
+import {GoogleAPI} from './services/gloader';
 
-import { AppComponent } from './app.component';
-
-bootstrap(AppComponent);
+bootstrap(AppComponent, [GoogleAPI])
+    .catch(err => console.log(err));
