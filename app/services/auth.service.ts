@@ -1,6 +1,6 @@
 import { USER } from '../components/mock-user';
 import { Injectable } from '@angular/core';
-import { GoogleAPI } from './gloader';
+import { GoogleAPI } from 'gapi.auth2';
 // import {User} from "../entities/user";
 
 @Injectable()
