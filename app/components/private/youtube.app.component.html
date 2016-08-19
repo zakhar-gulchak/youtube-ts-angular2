@@ -15,7 +15,7 @@
                 *ngIf="videos.length">
                 <li *ngFor="let video of videos">
                     <a class="clearfix"
-                       [routerLink]="['./Youtube', 'VideoDetail', {videoId: video.id.videoId}]">
+                       routerLink="/video/videoId: video.id.videoId">
                         <img class="thumbnail" [src]="video.snippet.thumbnails.default.url"
                              *ngIf="video.snippet.thumbnails.default.url"/>
 

@@ -1,6 +1,4 @@
-import {bootstrap}    from '@angular/platform-browser-dynamic';
-import {AppComponent} from './app.component';
-import {GoogleAPI} from 'gapi.auth2';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 
-bootstrap(AppComponent, [GoogleAPI])
-    .catch(err => console.log(err));
+platformBrowserDynamic().bootstrapModule(AppModule);

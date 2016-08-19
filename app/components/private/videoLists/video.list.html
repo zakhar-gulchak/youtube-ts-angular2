@@ -12,7 +12,7 @@
                     Can't find any videos.
                 </div>
                 <div class="list-group" *ngIf="videos.length">
-                    <a [routerLink]="['videoDetail', {videoId:video.id}]"
+                    <a routerLink="/video/videoId:video.id"
                        class="list-group-item clearfix"
                        *ngFor="let video of videos">
                         <img class="thumbnail" [src]="video.src"

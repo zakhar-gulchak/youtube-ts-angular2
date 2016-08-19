@@ -1,16 +1,34 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
-import {RouteSegment} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+
+import {IVideo} from './video';
+import {VideoService} from '../../../services/video.service';
+
 
 @Component({
-    selector: 'my-app',
-    templateUrl: 'app/components/private/video.detail.component.html',
-    directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS]
+    templateUrl: 'app/components/private/videoItem/video.detail.component.html'
 })
 export class VideoDetailComponent {
-        videoId: string;
-        constructor(routeSegment: RouteSegment) {
-            this.videoId = routeSegment.getParam('videoId');
-        }
+    pageTitle: string = 'Product Detail';
+    video: IVideo;
+    errorMessage: string;
+    private sub: any;
+
+    constructor(private route: ActivatedRoute,
+                private _videoService: VideoService) {
+    }
+
+    ngOnInit(): void {
+        this.sub = this.route.params.subscribe(
+            params => {
+                let id = +params['id'];
+                this.getVideo(id);
+            });
+    }
+
+    getVideo(id: number) {
+        this._videoService.getVideo(id).subscribe(
+            video => this.video = video,
+            error => this.errorMessage = <any>error);
+    }
 }

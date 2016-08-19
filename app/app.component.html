@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <a class="navbar-brand"
-           [routerLink]="['./Youtube', 'Home']">Home</a>
+           routerLink="home">Home</a>
         <div class="navbar-header">
             <button type="button"
                     class="navbar-toggle"
@@ -15,16 +15,16 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left" *ngIf="isLoggedIn()">
-                <li [class.active]="router.isRouteActive(router.generate(['Upload']))">
-                    <a [routerLink]="['Upload']">
+                <li routerLinkActive="active">
+                    <a routerLink="upload">
                     <i class="glyphicon glyphicon-plus"></i>
                     Upload video</a></li>
-                <li [class.active]="router.isRouteActive(router.generate(['Myvideos']))">
-                    <a [routerLink]="['Myvideos']">
+                <li routerLinkActive="active">
+                    <a routerLink="my-videos">
                     <i class="glyphicon glyphicon-list"></i>
                     My videos</a></li>
-                <li [class.active]="router.isRouteActive(router.generate(['WatchLaterList']))">
-                    <a [routerLink]="['WatchLaterList']">
+                <li routerLinkActive="active">
+                    <a routerLink="watch-later">
                     <i class="glyphicon glyphicon-time"></i>
                     Watch Later</a></li>
             </ul>
